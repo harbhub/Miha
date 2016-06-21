@@ -1,0 +1,7 @@
+.npmignore
+.gitignore
+node_modules
+tests
+tmp
+misc
+bits
