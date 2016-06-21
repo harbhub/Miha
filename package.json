@@ -1,0 +1,45 @@
+{
+  "name": "miha",
+  "version": "0.0.1",
+  "author": "harbhub",
+  "description": "Rapid Application Development Platform",
+  "keywords": [
+    "miha",
+    "platform",
+    "rapid",
+    "application",
+    "development"
+  ],
+  "bin": {
+    "miha": "./bin/miha.njs"
+  },
+  "main": "./miha.js",
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "body-parser": "^1.15.2",
+    "colors": "^1.1.2",
+    "compression": "^1.6.2",
+    "connect-redis": "^3.1.0",
+    "cookie-parser": "^1.4.3",
+    "errorhandler": "^1.4.3",
+    "express": "^4.14.0",
+    "express-session": "^1.13.0",
+    "moment": "^2.13.0",
+    "mysql": "^2.11.1",
+    "nodemailer": "^2.4.2",
+    "redis": "^2.6.2",
+    "socket.io": "^1.4.6"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/harbhub/Miha.git"
+  },
+  "bugs": {
+    "url": "https://github.com/harbhub/Miha/issues"
+  },
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=0.8"
+  }
+}
