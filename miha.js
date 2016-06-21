@@ -34,6 +34,10 @@ var socketIO = require('socket.io');
 
 var ioServer = socketIO.listen(server);
 
+var router = require('./routers/router');
+
+var sockets = require('./routers/sockets');
+
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(bodyParser.json());
@@ -44,10 +48,9 @@ app.use(errorHandler());
 
 app.use('/static', express.static(__dirname + '/static'));
 
-app.get('*', function (req, res, next) {
-	console.log('GET', req.url);
-	res.end('Hello');
-});
+router(app);
+
+sockets(app);
 
 server.listen(config.port, function () {
 	console.log('Listening on Port', server.address().port);
