@@ -3,5 +3,6 @@ module.exports = {
 	secrets: {
 		cookie: 'Super Secret Cookie String',
 		session: 'Super Secret Session String'
-	}
+	},
+	devMode: true
 };

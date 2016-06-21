@@ -18,8 +18,6 @@ var bcrypt = require('bcrypt');
 
 var express = require('express');
 
-var session = require('express-session');
-
 var bodyParser = require('body-parser');
 
 var cookieParser = require('cookie-parser');
@@ -38,6 +36,32 @@ var router = require('./routers/router');
 
 var sockets = require('./routers/sockets');
 
+var session = require('express-session');
+
+var sessionMiddleware, redisStore, redisClient, RedisStore;
+
+if (config.devMode) {
+
+	sessionMiddleware = session({
+		secret: config.secrets.session,
+		resave: false,
+  		saveUninitialized: false,
+  		cookie: {secure: false}
+	});
+
+} else {
+
+	sessionMiddleware = session({
+		store: redisStore,
+		key: config.secrets.cookie,
+		secret: config.secrets.session,
+		resave: false,
+		saveUninitialized: false,
+		cookie: {secure: true}
+	});
+
+}
+
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(bodyParser.json());
@@ -45,6 +69,8 @@ app.use(bodyParser.json());
 app.use(cookieParser(config.secrets.cookie));
 
 app.use(errorHandler());
+
+app.use(sessionMiddleware);
 
 app.use('/static', express.static(__dirname + '/static'));
 
